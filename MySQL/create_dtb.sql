@@ -1,4 +1,5 @@
-CREATE SCHEMA IF NOT EXISTS education_registration; 
+DROP SCHEMA IF EXISTS education_registration; 
+CREATE SCHEMA education_registration; 
 USE education_registration;
 
 # create table and constraint for database from here
