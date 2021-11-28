@@ -64,5 +64,23 @@ export const useStyles = makeStyles((theme) => ({
     },
     note: {
         color: '#a435f0',
+    },
+    subinfo: {
+        height: '30px',
+        display: 'flex',
+        fontSize: '14px',
+        alignItems: 'center',
+        '& svg': {
+            height: '25px',
+            width: '25px',
+            marginRight: '10px',
+        },
+        '& p': {
+            height: '25px',
+            display: 'flex',
+            fontSize: '14px',
+            alignItems: 'center',
+            margin: '0px 10px',
+        }
     }
 }));

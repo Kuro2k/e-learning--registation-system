@@ -1,27 +1,40 @@
 import React from 'react'
 import { useStyles } from './product.style.component';
-import img from './../../asset/4.jpg';
 import { Button } from '@mui/material'
-import StarIcon from '@mui/icons-material/Star'
+import PersonIcon from '@mui/icons-material/Person';
+import { useDispatch } from 'react-redux';
+import { addToCartAction } from './../../reducer/cartReducer';
+const imglink = `./../../asset/${Math.floor(Math.random() * 15)}.jpg`;
 
-function Product() {
+function Product(props) {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const course = props.course;
+
+    const handleAddToCart = () => {
+        dispatch(addToCartAction(course));
+    }
+
+    const getImageUrl = () => {
+        return 'https://picsum.photos/200/300?second=' + new Date().toLocaleString();
+    }
+
     return (
         <div className={classes.root}>
             <div className={classes.box}>
                 <div className={classes.imagebox}>
                     <div className={classes.image}>
-                        <img src={img} alt=""></img>
+                        <img src={getImageUrl()} alt=""></img>
                     </div>
                     <div className={classes.fade}>
-                        <Button>
+                        <Button onClick={handleAddToCart}>
                             add to cart
                         </Button>
                     </div>
                 </div>
                 <div className={classes.title}>
                     <p>
-                        2022 Complete Python Bootcamp From Zero to Hero in Python
+                        {course.name}
                     </p>
                 </div>
                 <div className={classes.author}>
@@ -30,18 +43,16 @@ function Product() {
                     </p>
                 </div>
                 <div className={classes.dg}>
-                    
-                    <StarIcon/>
-                    <StarIcon/>
-                    <StarIcon/>
-                    <StarIcon/>
-                    <StarIcon/>
+                    <PersonIcon/>  {course.num_learner}  people
+                    <p>
+                        {course.course_length} lessons
+                    </p>
                 </div>
 
                 <div className={classes.price}>
                     <p>
-                        $19.99
-                        <span>$25.99</span>
+                        $ {course.tuition_fee}
+                        <span>{course.start_date.slice(0,10)}</span>
                     </p>
                 </div>
             </div>

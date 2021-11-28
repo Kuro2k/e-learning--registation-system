@@ -3,9 +3,15 @@ import { useStyles } from './cart.style.component';
 import { Grid, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import CartItem from '../../components/cartitem/cartitem.component';
+import { useSelector } from 'react-redux';
+
 
 function Cart() {
     const classes = useStyles();
+
+    const cart = useSelector(state => state.Cart.cart);
+    const total = useSelector(state => state.Cart.total);
+
     return (
         <div className={classes.root}>
             <div style={{ height: "100px" }}></div>
@@ -19,20 +25,24 @@ function Cart() {
                     <div className={classes.cartlist}>
                         <Grid container spacing={2}>
                             <Grid item xs={9}>
-                                <CartItem/>
-                                <CartItem/>
-                                <CartItem/>
-                                <CartItem/>
-                                <CartItem/>
+                                {
+                                    cart.map((item, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <CartItem item={item}/>
+                                            </div>
+                                        )
+                                    }, '')
+                                }
                             </Grid>
                             <Grid item xs={3}>
                                 <div className={classes.payment}>
                                     <h3>Total:</h3>
-                                    <p>$19.9</p>
+                                    <p>$ {total}</p>
                                     <div>
-                                    <span>$26.9</span>
+                                    <span>$0</span>
                                     <h6>
-                                        80% off
+                                        0% off
                                     </h6>
                                     </div>
                                     <Link to="/checkout">

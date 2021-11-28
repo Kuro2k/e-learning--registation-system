@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStyles } from "./home.style.page";
 import banner from "./../../asset/banner.jpg";
 import Product from "../../components/product/product.component";
@@ -16,6 +16,10 @@ import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 import ProductList from "../../components/productlist/productlist.component";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setcoursesAction } from "./../../reducer/courseReducer";
+import { initCartAction } from './../../reducer/cartReducer';
 
 function ArrowButtonLeft(props) {
   const classes = useStyles();
@@ -58,6 +62,40 @@ function Home(props) {
     nextArrow: <ArrowButtonRight />,
     prevArrow: <ArrowButtonLeft />,
   };
+  const dispatch = useDispatch();
+
+  // const courses = useSelector((state) => state.Courses.coursesview);
+  const topcourse = useSelector((state) => state.Courses.topcourse);
+
+  const getCourses = async (e) => {
+    try {
+      const result = await axios.get(
+        "http://localhost:3300/api/v1/course/courses"
+      );
+      dispatch(setcoursesAction(result.data));
+    } catch (error) {}
+  };
+
+  const getAllCourse = async () => {
+    try {
+      const result = await axios.get(
+        `http://localhost:3300/api/v1/course/registercourse/${
+          JSON.parse(localStorage.getItem("user")).user.id
+        }`,
+        {
+          headers: {
+            token: JSON.parse(localStorage.getItem("user")).token,
+          },
+        }
+      );
+      dispatch(initCartAction(result.data[0]))
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getCourses();
+    getAllCourse();
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -110,49 +148,34 @@ function Home(props) {
       </div>
       <div className={classes.title}>
         <div>
-					<p className={classes.p}>Top Courses</p>
-				</div>
+          <p className={classes.p}>Top Courses</p>
+        </div>
       </div>
       <div className={classes.recommendproductsbox}>
         <div className={classes.recommendproducts}>
           <div>
             <Slider {...settings}>
-              <div>
-                <Product />
-              </div>
-              <div>
-                <Product />
-              </div>
-              <div>
-                <Product />
-              </div>
-              <div>
-                <Product />
-              </div>
-              <div>
-                <Product />
-              </div>
-              <div>
-                <Product />
-              </div>
-              <div>
-                <Product />
-              </div>
+              {topcourse.map((course, index) => {
+                return (
+                  <div key={index}>
+                    <Product course={course} />
+                  </div>
+                );
+              }, "")}
             </Slider>
           </div>
         </div>
       </div>
 
-			<div className={classes.title}>
+      <div className={classes.title}>
         <div>
-					<p className={classes.p}>All Courses</p>
-				</div>
+          <p className={classes.p}>All Courses</p>
+        </div>
       </div>
 
-			<div className={classes.allcourses}>
-				<ProductList/>
-			</div>
-
+      <div className={classes.allcourses}>
+        <ProductList />
+      </div>
     </div>
   );
 }

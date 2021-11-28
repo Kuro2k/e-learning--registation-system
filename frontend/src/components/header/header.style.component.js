@@ -45,6 +45,11 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "16px",
       color: "#555",
     },
+    '& button': {
+      height: '50px',
+      width: '50px',
+      borderRadius: '25px',
+    }
   },
   icon: {
     width: "50px",

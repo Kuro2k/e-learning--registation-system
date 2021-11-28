@@ -25,6 +25,11 @@ export const useStyles = makeStyles((theme) => ({
         '&:hover': {
             width: '300px',
             boxShadow: "0px 5px 30px 0px #a430f010",
+        },
+        '& button': {
+            height: '50px',
+            width: '50px',
+            borderRadius: '25px',
         }
     },
     icon: {
@@ -34,5 +39,6 @@ export const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         color: '#a430f0',
+        borderRadius: '25px',
     }
 }))

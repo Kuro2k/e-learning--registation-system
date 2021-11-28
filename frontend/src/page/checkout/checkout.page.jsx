@@ -3,11 +3,15 @@ import { useStyles } from './checkout.style.page'
 import { Grid, Button } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+
 function Checkout() {
     const classes = useStyles();
+
+    const total = useSelector(state => state.Cart.total);
     return (
         <div className={classes.root}>
             <div style={{ height: "100px" }}></div>
@@ -57,7 +61,7 @@ function Checkout() {
                                             <p>Original price:</p>
                                         </div>
                                         <div className={classes.itemr}>
-                                            <p>$254.97</p>
+                                            <p>$ {total}</p>
                                         </div>
                                     </div>
                                     <div className={classes.item}>
@@ -65,7 +69,7 @@ function Checkout() {
                                             <p>Coupon discounts:</p>
                                         </div>
                                         <div className={classes.itemr}>
-                                            <p>-$225.00</p>
+                                            <p>-$0</p>
                                         </div>
                                     </div>
                                     <hr/>
@@ -74,7 +78,7 @@ function Checkout() {
                                             <p>Total:</p>
                                         </div>
                                         <div className={classes.itemr}>
-                                            <p>$29.97</p>
+                                            <p>$ {total}</p>
                                         </div>
                                     </div>
                                     <Button>

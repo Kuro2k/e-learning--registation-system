@@ -78,12 +78,21 @@ export const useStyles = makeStyles((theme) => ({
         }
     },
     dg: {
-        padding: '0px 10px',
+        height: '25px',
+        color: '#777',
+        display: 'flex',
+        padding: '0px 5px',
+        fontSize: '16px',
+        alignItems: 'center',
         '& svg': {
-            height: '17px',
-            width: '17px',
+            height: '20px',
+            width: '20px',
             color: '#e59819',
+            marginRight: '10px',
         },
+        '& p': {
+            marginLeft: '30px',
+        }
     },
     price: {
         padding: '0px 10px',
@@ -96,7 +105,7 @@ export const useStyles = makeStyles((theme) => ({
             marginLeft: '10px',
             color: 'gray',
             fontSize: '14px',
-            textDecoration: 'line-through',
-        }
+        },
+        
     },
 }))
