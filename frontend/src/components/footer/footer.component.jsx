@@ -1,7 +1,7 @@
 import React from "react";
 import { useStyles } from "./footer.style.component";
 import { Grid } from '@mui/material';
-import logolight from "./../../asset/logo-light.svg";
+import logolight from "./../../asset/logodark.jpg";
 
 function Footer() {
 	const classes = useStyles();

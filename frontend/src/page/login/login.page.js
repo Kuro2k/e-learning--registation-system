@@ -33,7 +33,7 @@ function Login() {
             dispatch(setloginAction());
             history.push('/');
         } catch (error) {
-            alert('Đăng ký không thành công!');
+            alert('Đăng nhập không thành công!');
         }
     }
 

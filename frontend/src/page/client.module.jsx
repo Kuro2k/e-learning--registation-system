@@ -13,12 +13,16 @@ import Login from './login/login.page';
 import SignUp from './signup/signup.page';
 import Cart from './cart/cart.component';
 import Checkout from './checkout/checkout.page';
+import User from './user/user.page';
+import Detail from './detail/detail.page';
 
 function Client() {
     return (
         <>
             <Header/>
             <Switch>
+                <Route path="/detail" exact component={Detail}/>
+                <Route path="/user" exact component={User}/>
                 <Route path="/checkout" exact component={Checkout}/>
                 <Route path="/cart" exact component={Cart}/>
                 <Route path="/signup" exact component={SignUp}/>

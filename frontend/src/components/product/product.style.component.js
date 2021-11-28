@@ -17,12 +17,13 @@ export const useStyles = makeStyles((theme) => ({
                 height: '170px',
             }
         },
-        cursor: 'pointer',
+        
         overflow: 'hidden',
     },
     box: {
         height: '350px',
         width: '100%',
+        zIndex: 10,
     },
     imagebox: {
         height: '170px',
@@ -44,7 +45,7 @@ export const useStyles = makeStyles((theme) => ({
         width: '100%',
         backgroundColor: 'rgba(0,0,0,0.2)',
         display: 'flex',
-        
+        zIndex: 1000,
         alignItems: 'center',
         justifyContent: 'center',
         transition: '0.5s',
@@ -60,7 +61,9 @@ export const useStyles = makeStyles((theme) => ({
             }
         },
     },
-
+    contentbox: {
+        cursor: 'pointer',
+    },
     title: {
         height: '50px',
         overflow: 'hidden',
@@ -72,6 +75,7 @@ export const useStyles = makeStyles((theme) => ({
         }
     },
     author: {
+        marginTop: '10px',
         '& p': {
             fontSize: '14px',
             padding: '5px 10px',
@@ -108,4 +112,14 @@ export const useStyles = makeStyles((theme) => ({
         },
         
     },
+    modal: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        height: 400,
+        backgroundColor: 'white',
+        border: '2px solid #000',
+    }
 }))
