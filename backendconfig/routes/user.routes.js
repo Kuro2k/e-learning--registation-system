@@ -8,4 +8,5 @@ userRouter.post('/register', userController.register);
 userRouter.put('/update/:id', authenticate, userController.update);
 userRouter.put('/changepw/:id', authenticate, userController.updatepass);
 userRouter.get('/learnerdetail/:id', authenticate, userController.getInfo);
+userRouter.get('/teachers/:id', userController.getteachers);
 module.exports = userRouter;

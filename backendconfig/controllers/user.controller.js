@@ -91,3 +91,17 @@ exports.getInfo = (req, res) => {
     res.status(400).send("Không thể chon người dùng này!");
   }
 };
+
+exports.getteachers = (req, res) => {
+  database.query(
+    `select * from user_system where id in ( select lecturerid from teaches where courseid = ? )`,
+    req.params.id,
+    (error, user) => {
+      if (user.length == 0 || error) {
+        res.status(500).send(error);
+      } else {
+        res.send(user);
+      }
+    }
+  );
+};

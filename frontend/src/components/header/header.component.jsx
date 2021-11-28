@@ -4,7 +4,7 @@ import { Grid, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import LocalGroceryStoreOutlinedIcon from "@mui/icons-material/LocalGroceryStoreOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import logo from "./../../asset/logo.svg";
+import logo from "./../../asset/logolight.jpg";
 import { Link } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,14 +28,16 @@ function LoginComponent() {
           <LocalGroceryStoreOutlinedIcon />
         </Button>
       </Link>
-      <Link to="/cart">
+      <Link to="/user">
         <Button title="Người dùng">
           <PersonOutlineOutlinedIcon />
         </Button>
       </Link>
+      <Link to="/login">
       <Button onClick={handleLogout} title="Đăng xuất">
         <LogoutIcon />
       </Button>
+      </Link>
     </div>
   );
 }

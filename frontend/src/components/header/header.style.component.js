@@ -16,7 +16,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     "& img": {
-      height: "40px",
+      height: "70px",
     },
   },
   searchbox: {

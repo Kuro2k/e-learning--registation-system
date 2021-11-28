@@ -6,7 +6,7 @@ export const courseSlice = createSlice({
         courses: [],
         coursesview: [],
         topcourse: [],
-        courseselect: [],
+        courseselect: {},
     },
     reducers: {
         setcoursesAction: (state, action) => {
@@ -16,9 +16,12 @@ export const courseSlice = createSlice({
         },
         setcourseviewAction: (state, action) => {
             state.coursesview = action.payload;
+        },
+        setcourseSelectAction: (state, action) => {
+            state.courseselect = action.payload;
         }
     }
 })
 
-export const { setcoursesAction, setcourseviewAction } = courseSlice.actions;
+export const { setcoursesAction, setcourseviewAction, setcourseSelectAction } = courseSlice.actions;
 export default courseSlice.reducer;
